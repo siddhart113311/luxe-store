@@ -4,6 +4,7 @@ import SearchBar from './SearchBar';
 import { useCartStore } from '@/store/cart';
 
 export default function Navbar() {
+  //this is navbar
   const items = useCartStore(s => s.items);
   return (
     <header className="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-black/5">
