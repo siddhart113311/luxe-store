@@ -1,0 +1,14 @@
+import { NextResponse } from "next/server";
+import { prisma } from "../../../../lib/prisma";
+
+export async function GET(_request, { params }) {
+  const { slug } = params;
+  const product = await prisma.product.findUnique({
+    where: { slug },
+    include: { images: true, variants: true, category: true },
+  });
+  if (!product) return NextResponse.json({ error: "Not found" }, { status: 404 });
+  return NextResponse.json({ product });
+}
+
+
